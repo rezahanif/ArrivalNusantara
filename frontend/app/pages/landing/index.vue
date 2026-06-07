@@ -1,15 +1,13 @@
+<!-- pages/landing/index.vue
+     Landing splash page — uses the full-screen `landing` layout
+     and renders the Hero component.
+-->
 <template>
-  <div>
-    <!-- Landing Page Components -->
-    <!-- Hero Section -->
-    <!-- Featured Cards -->
-    <!-- Top Destinations -->
-    <!-- Detail Experience -->
-  </div>
+  <LandingHero />
 </template>
 
 <script setup lang="ts">
 definePageMeta({
-  layout: 'default',
+  layout: 'landing',
 })
 </script>

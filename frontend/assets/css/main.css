@@ -1,1 +1,17 @@
-@import "tailwindcss";
+@import "tailwindcss";@import "tailwindcss";
+
+/* ─── Design Tokens ─────────────────────────────────────────── */
+@theme {
+  /* Typography */
+  --font-jakarta: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand greens (from Figma: #1a3a22) */
+  --color-forest-950: #0e2116;
+  --color-forest-900: #1a3a22;
+  --color-forest-800: #243f2c;
+  --color-forest-700: #2e5438;
+
+  /* Neutral tones */
+  --color-sand-50:  #fbf9f8;
+  --color-sand-100: #f5f0ec;
+}
