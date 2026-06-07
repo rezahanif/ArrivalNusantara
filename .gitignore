@@ -1,46 +1,34 @@
-# Dependencies
+# 1. Dependencies (Shared with React)
 node_modules/
 .pnp
 .pnp.js
 
-# Testing
-coverage/
-
-# Production
-build/
+# 2. Nuxt 4 Specific Core Exclusions (CRITICAL)
+.nuxt/
+.output/
 dist/
-.next/
-out/
+build/
 
-# Misc
-.DS_Store
+# 3. Local Runtime Environmental Keys (Security Keep-out)
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.*
+!.env.example
 
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# 4. JavaScript/TypeScript Dev Tooling Configurations
+.eslintcache
+*.log
+*-debug.log*
+*-error.log*
 
-# IDE
+# 5. Apple macOS System Metadata Files
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# 6. IDE Settings (Keeps your local text editor configurations personal)
 .vscode/
 .idea/
 *.swp
 *.swo
-*~
 .project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
-# OS
-Thumbs.db
-.AppleDouble
-.LSOverride

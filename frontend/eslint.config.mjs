@@ -1,18 +1,34 @@
-import { defineConfig, globalIgnores } from "eslint/config";
-import nextVitals from "eslint-config-next/core-web-vitals";
-import nextTs from "eslint-config-next/typescript";
+import eslintPluginVue from 'eslint-plugin-vue'
+import eslintConfigPrettier from 'eslint-config-prettier'
 
-const eslintConfig = defineConfig([
-  ...nextVitals,
-  ...nextTs,
-  // Override default ignores of eslint-config-next.
-  globalIgnores([
-    // Default ignores of eslint-config-next:
-    ".next/**",
-    "out/**",
-    "build/**",
-    "next-env.d.ts",
-  ]),
-]);
-
-export default eslintConfig;
+export default [
+  {
+    ignores: [
+      'node_modules/**',
+      'dist/**',
+      '.nuxt/**',
+      '.output/**',
+      'build/**',
+    ],
+  },
+  {
+    files: ['**/*.vue', '**/*.ts', '**/*.js'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+    },
+  },
+  ...eslintPluginVue.configs['flat/recommended'],
+  eslintConfigPrettier,
+  {
+    rules: {
+      'vue/multi-word-component-names': 'off',
+      'vue/no-unused-vars': [
+        'error',
+        {
+          ignorePattern: '^_',
+        },
+      ],
+    },
+  },
+]
