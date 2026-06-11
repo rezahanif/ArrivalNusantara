@@ -22,6 +22,9 @@ export default {
           800: '#075985',
           900: '#0c3d66',
         },
+        forest: {
+          900: '#1a3a22',
+        },
       },
       fontFamily: {
         sans: ['Geist', 'ui-sans-serif', 'system-ui', 'sans-serif'],

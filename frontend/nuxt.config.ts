@@ -7,7 +7,6 @@ export default defineNuxtConfig({
 
   // 2. Modules
   modules: [
-    '@nuxt/eslint'
   ],
 
   // 3. Inject Tailwind natively into the Vite compiler

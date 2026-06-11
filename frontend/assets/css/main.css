@@ -1,4 +1,4 @@
-@import "tailwindcss";@import "tailwindcss";
+@import "tailwindcss";
 
 /* ─── Design Tokens ─────────────────────────────────────────── */
 @theme {
@@ -14,4 +14,11 @@
   /* Neutral tones */
   --color-sand-50:  #fbf9f8;
   --color-sand-100: #f5f0ec;
+}
+/* ─── Utilities ─────────────────────────────────────────────── */
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none; /* Hides in Chrome/Safari/Edge */
+  }
 }
