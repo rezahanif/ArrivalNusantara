@@ -30,7 +30,7 @@
       <!-- 1. Journey to the Summit (tall) -->
       <GalleryPhotoCard
         class="row-span-6"
-        image="/images/Walk.webp"
+        :image="cardsData.journeyToSummit.image!"
         :icon="cardsData.journeyToSummit.icon!"
         :title="cardsData.journeyToSummit.title!"
         :description="cardsData.journeyToSummit.body!"
@@ -40,7 +40,7 @@
       <!-- 2. Nature. People. Purpose. (tall hero) -->
       <GalleryHeroQuoteCard
         class="row-span-6"
-        image="/images/lombok.webp"
+        :image="cardsData.brandIdentity.image!"
         :heading="cardsData.brandIdentity.heading!"
         :description="cardsData.brandIdentity.body!"
       />
@@ -48,7 +48,7 @@
       <!-- 3. From Seed to Cup -->
       <GalleryPhotoCard
         class="row-span-5"
-        image="/images/aboutrightsquare.webp"
+        :image="cardsData.fromSeedToCup.image!"
         :icon="cardsData.fromSeedToCup.icon!"
         :title="cardsData.fromSeedToCup.title!"
         :description="cardsData.fromSeedToCup.body!"
@@ -74,7 +74,7 @@
       <!-- 6. Rinjani Magic Hour (wide, spans 2 cols) -->
       <GalleryPhotoCard
         class="row-span-5 col-span-2"
-        image="/images/mountain.webp"
+        :image="cardsData.rinjaniMagicHour.image!"
         :icon="cardsData.rinjaniMagicHour.icon!"
         :title="cardsData.rinjaniMagicHour.title!"
         :description="cardsData.rinjaniMagicHour.body!"
@@ -117,7 +117,7 @@ definePageMeta({ layout: 'sidebar' })
 const cardsData = {
   journeyToSummit: {
     type: 'photo-caption',
-    image: 'https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=400&q=75',
+    image: '/images/Walk.webp',
     imageHeight: '192px',
     icon: Mountain,
     iconSize: '20px',
@@ -131,13 +131,13 @@ const cardsData = {
   },
   brandIdentity: {
     type: 'brand-identity',
-    image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=75', // Desktop hero image
+    image: '/images/lombok.webp', // Desktop hero image
     heading: 'Nature. People.\nPurpose.',
     body: 'We connect adventurers with nature\nthrough meaningful experiences,\nlocal partnerships, and a deep\nrespect for the land we explore.',
   },
   fromSeedToCup: {
     type: 'photo-caption',
-    image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400&q=75',
+    image: '/images/aboutrightsquare.webp',
     imageHeight: '160px',
     icon: Leaf,
     iconSize: '19px',
@@ -163,7 +163,7 @@ const cardsData = {
   },
   rinjaniMagicHour: {
     type: 'photo-caption',
-    image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=400&q=75',
+    image: '/images/mountain.webp',
     imageHeight: '144px',
     icon: Sunrise,
     iconSize: '13px',
@@ -178,7 +178,7 @@ const cardsData = {
   },
   coffeeWalk: {
     type: 'photo-caption',
-    image: 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400&q=75',
+    image: '/images/exp-coffee.webp',
     imageHeight: '144px',
     icon: Footprints,
     iconSize: '13px',
