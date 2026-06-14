@@ -74,7 +74,7 @@
 
     <!-- Right side phone circle linking to WhatsApp -->
     <a
-      href="https://wa.me/6281234567890"
+      :href="waLink"
       target="_blank"
       class="
         relative z-20 shrink-0
@@ -99,4 +99,6 @@
 
 <script setup lang="ts">
 import { Phone } from 'lucide-vue-next'
+
+const waLink = getWhatsAppLink("Hello Arrival Nusantara! I would like to get in touch about booking an experience.")
 </script>

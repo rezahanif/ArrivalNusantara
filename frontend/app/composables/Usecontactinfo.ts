@@ -1,16 +1,23 @@
-// composables/useContactInfo.ts
-// Shared contact data used by both desktop and mobile Contact page
-// components (Card / MobileCard, ConnectWithUs / MobileConnect).
-
 import { MessageCircle, Mail, Phone, MapPin, Camera, Facebook, Youtube, Compass } from 'lucide-vue-next'
+
+export const WHATSAPP_RAW = '6281234567890'
+export const WHATSAPP_FORMATTED = '+62 812-3456-7890'
+
+export const getWhatsAppLink = (message?: string) => {
+    const baseUrl = `https://wa.me/${WHATSAPP_RAW}`
+    if (message) {
+        return `${baseUrl}?text=${encodeURIComponent(message)}`
+    }
+    return baseUrl
+}
 
 export const useContactInfo = () => {
     const contactItems = [
         {
             icon: MessageCircle,
             label: 'WhatsApp',
-            value: '+62 812-3456-7890',
-            link: 'https://wa.me/6281234567890',
+            value: WHATSAPP_FORMATTED,
+            link: getWhatsAppLink("Hello Arrival Nusantara! I would like to inquire about booking a tour."),
             helper: 'Chat with us on WhatsApp',
             helperEmphasis: true,
         },

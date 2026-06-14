@@ -63,8 +63,9 @@
         </button>
         <!-- Twitter/X — outlined -->
         <button class="border border-[#1a3a22] size-12 rounded-full flex items-center justify-center">
-          <svg width="20" height="16" viewBox="0 0 20 16" fill="none">
-            <path d="M19 1a9.5 9.5 0 0 1-2.8.8A4.8 4.8 0 0 0 18.5.4a9.6 9.6 0 0 1-3.1 1.2A4.8 4.8 0 0 0 .9 6a13.6 13.6 0 0 1-9.9-5A4.8 4.8 0 0 0 2.5 7.6 4.8 4.8 0 0 1 .3 7v.1a4.8 4.8 0 0 0 3.8 4.7 4.8 4.8 0 0 1-2.2.1 4.8 4.8 0 0 0 4.5 3.3A9.6 9.6 0 0 1 0 16.8" stroke="#1a3a22" stroke-width="1.4" stroke-linecap="round"/>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a3a22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
+            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
           </svg>
         </button>
         <!-- TikTok — outlined -->

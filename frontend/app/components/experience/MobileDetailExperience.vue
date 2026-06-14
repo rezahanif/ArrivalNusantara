@@ -18,11 +18,16 @@
       </button>
       <button
         class="size-10 rounded-full bg-white/80 backdrop-blur-[6px] flex items-center justify-center
-               shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)]"
+               shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] active:scale-95 transition-transform"
+        @click="toggleWishlist(props.experience.id)"
       >
         <svg width="20" height="19" viewBox="0 0 20 19" fill="none">
-          <path d="M10 17.5S2 12.5 2 6.5a4 4 0 0 1 8-1.17A4 4 0 0 1 18 6.5c0 6-8 11-8 11Z"
-            stroke="#03240e" stroke-width="1.4" fill="none"/>
+          <path
+            d="M10 17.5S2 12.5 2 6.5a4 4 0 0 1 8-1.17A4 4 0 0 1 18 6.5c0 6-8 11-8 11Z"
+            :stroke="isWishlisted(props.experience.id) ? '#ef4444' : '#03240e'"
+            :fill="isWishlisted(props.experience.id) ? '#ef4444' : 'none'"
+            stroke-width="1.4"
+          />
         </svg>
       </button>
     </div>
@@ -42,16 +47,21 @@
 
       <!-- Right-side option photos strip — node 478:1182
            Absolute tops: 138, 216, 301, 379 px (per Figma).  Middle photo (i=1) is 76px, others 69px. -->
-      <div class="absolute right-6 top-0 h-[425px] pointer-events-none z-10">
-        <div
-          v-for="(photo, i) in optionPhotos"
+      <div class="absolute right-6 top-0 h-[425px] pointer-events-auto z-10">
+        <button
+          v-for="(photo, i) in allImgs"
           :key="i"
-          class="absolute right-0 rounded-[20px] overflow-hidden border-4 border-white"
-          :class="i === 1 ? 'size-[76px]' : 'size-[69px]'"
+          type="button"
+          class="absolute right-0 rounded-[20px] overflow-hidden border-4 transition-all duration-200"
+          :class="[
+            i === 1 ? 'size-[76px]' : 'size-[69px]',
+            activeImg === i ? 'border-white scale-105 shadow-md z-20' : 'border-white/50 hover:border-white/80'
+          ]"
           :style="{ top: photoTops[i] + 'px' }"
+          @click="activeImg = i"
         >
           <img :src="photo" :alt="`Option ${i + 1}`" class="w-full h-full object-cover" loading="lazy" />
-        </div>
+        </button>
       </div>
 
       <!-- Hero text — node 478:977 -->
@@ -148,17 +158,25 @@ import type { Experience } from '~/types/experience'
 
 defineEmits<{ back: []; book: [] }>()
 
+const { isWishlisted, toggleWishlist } = useWishlist()
+
 const expanded = ref(false)
+const activeImg = ref(0)
 
 const props = defineProps<{
   experience: Experience
 }>()
 
-// Use the primary image as hero
-const heroImage = computed(() => props.experience.image)
+// Reset state when a different experience is selected
+watch(() => props.experience.id, () => {
+  activeImg.value = 0
+})
 
-// Use the rest of the images as option photos
-const optionPhotos = computed(() => props.experience.images)
+// Combined image list (main + gallery sub-images)
+const allImgs = computed(() => [props.experience.image, ...props.experience.images])
+
+// Use the active index to determine the hero image
+const heroImage = computed(() => allImgs.value[activeImg.value] ?? props.experience.image)
 
 // Format price with dollar sign
 const priceDisplay = computed(() => `$${props.experience.price}`)

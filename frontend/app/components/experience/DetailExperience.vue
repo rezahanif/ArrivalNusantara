@@ -46,13 +46,13 @@
         <!-- Heart / wishlist -->
         <button
           type="button"
-          :aria-label="liked ? 'Remove from wishlist' : 'Add to wishlist'"
-          class="absolute top-3 right-3 w-9 h-9 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
-          @click="liked = !liked"
+          :aria-label="isWishlisted(experience.id) ? 'Remove from wishlist' : 'Add to wishlist'"
+          class="absolute top-3 right-3 w-9 h-9 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors active:scale-95"
+          @click="toggleWishlist(experience.id)"
         >
           <Heart
             class="w-4 h-4 transition-colors"
-            :class="liked ? 'fill-red-400 text-red-400' : 'text-white'"
+            :class="isWishlisted(experience.id) ? 'fill-red-400 text-red-400' : 'text-white'"
           />
         </button>
 
@@ -165,7 +165,7 @@ const emit = defineEmits<{
 
 // ── Image gallery state ────────────────────────────────────────
 const activeImg = ref(0)
-const liked     = ref(false)
+const { isWishlisted, toggleWishlist } = useWishlist()
 
 // Show up to 3 thumbnails; remainder shown as "+N"
 const MAX_THUMBS = 3
@@ -180,7 +180,6 @@ function prevImg() {
 // Reset state when a different experience is selected
 watch(() => props.experience.id, () => {
   activeImg.value = 0
-  liked.value = false
 })
 
 // ── Stats row ─────────────────────────────────────────────────

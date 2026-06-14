@@ -29,12 +29,16 @@
           <!-- Wishlist button — top right -->
           <button
             class="absolute top-4 right-4 size-8 rounded-full flex items-center justify-center
-                   bg-[rgba(251,249,248,0.8)] backdrop-blur-[4px]"
-            @click.stop
+                   bg-[rgba(251,249,248,0.8)] backdrop-blur-[4px] active:scale-95 transition-transform"
+            @click.stop="toggleWishlist(exp.id)"
           >
             <svg width="12" height="11" viewBox="0 0 12 11" fill="none">
-              <path d="M6 10.5S1 7 1 3.5A2.5 2.5 0 0 1 6 2.27 2.5 2.5 0 0 1 11 3.5C11 7 6 10.5 6 10.5Z"
-                stroke="#03240e" stroke-width="1.2" fill="none"/>
+              <path
+                d="M6 10.5S1 7 1 3.5A2.5 2.5 0 0 1 6 2.27 2.5 2.5 0 0 1 11 3.5C11 7 6 10.5 6 10.5Z"
+                :stroke="isWishlisted(exp.id) ? '#ef4444' : '#03240e'"
+                :fill="isWishlisted(exp.id) ? '#ef4444' : 'none'"
+                stroke-width="1.2"
+              />
             </svg>
           </button>
 
@@ -58,4 +62,6 @@ import type { Experience } from '~/types/experience'
 
 const props = defineProps<{ experiences: Experience[] }>()
 defineEmits<{ 'see-all': []; select: [exp: Experience] }>()
+
+const { isWishlisted, toggleWishlist } = useWishlist()
 </script>

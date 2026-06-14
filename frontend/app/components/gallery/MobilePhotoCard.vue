@@ -70,9 +70,7 @@
       class="bg-white border border-[rgba(194,200,191,0.3)] rounded-3xl p-5"
     >
       <div class="border border-[#c2c8bf] rounded-full size-10 flex items-center justify-center mb-3">
-        <svg width="22" height="20" viewBox="0 0 22 20" fill="none">
-          <path d="M11 18S2 12 2 6a4.5 4.5 0 0 1 9-1 4.5 4.5 0 0 1 9 1c0 6-9 12-9 12Z" stroke="#03240e" stroke-width="1.3" fill="none"/>
-        </svg>
+        <component :is="card.icon" class="w-5 h-5 text-forest-900" :stroke-width="1.5" />
       </div>
       <h3 class="font-jakarta font-normal text-[16px] leading-[24px] text-[#03240e] mb-1">Our Promise</h3>
       <p class="font-jakarta font-normal text-[11px] leading-[17.88px] text-[#424842]">
