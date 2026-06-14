@@ -151,7 +151,7 @@
 <script setup lang="ts">
 import {
   ChevronLeft, Heart, MapPin,
-  Route, Thermometer, Star, ArrowRight,
+  Route, Clock, Star, ArrowRight,
 } from 'lucide-vue-next'
 import type { Experience } from '~/types/experience'
 
@@ -190,9 +190,9 @@ const stats = computed(() => [
     icon: Route,
   },
   {
-    label: 'Temp',
-    value: props.experience.temp,
-    icon: Thermometer,
+    label: 'Duration',
+    value: props.experience.duration,
+    icon: Clock,
   },
   {
     label: 'Rating',

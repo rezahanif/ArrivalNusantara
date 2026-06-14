@@ -92,7 +92,7 @@ const experiences: Experience[] = [
   {
     id: 1,
     title: 'Rinjani Tracking',
-    subtitle: 'Waterfall, Bali, Indonesia',
+    subtitle: 'Mountain, Lombok, Indonesia',
     category: 'mountain',
     image: '/images/exp-rinjani.webp',
     images: ['/images/trek.webp', '/images/trek-2.webp'],
@@ -108,18 +108,18 @@ const experiences: Experience[] = [
   {
     id: 2,
     title: 'Coffee Walk',
-    subtitle: 'Beach, Bali, Indonesia',
+    subtitle: 'Sembalun, Lombok, Indonesia',
     category: 'nature',
     image: '/images/exp-coffee.webp',
     images: [],
-    location: 'Bali, Indonesia',
+    location: 'Sembalun, Lombok',
     distance: '5 Km',
     temp: '28° C',
     rating: 4.7,
     price: 85,
     duration: 'Half Day',
     description:
-      'Wander through lush Balinese coffee plantations with a local guide, discovering the art of traditional coffee cultivation. Learn how Kopi Luwak and arabica beans are grown, processed, and brewed — then taste a flight of artisan roasts at a jungle terrace with sweeping valley views.',
+      'Wander through lush Sembalun coffee plantations at the foot of Mount Rinjani with a local guide. Discover the unique art of traditional Lombok coffee cultivation, learning how local arabica and robusta beans are grown in rich volcanic soil, hand-processed, and roasted — then taste a flight of artisan roasts on a scenic terrace overlooking the breathtaking valley.',
   },
   {
     id: 3,
@@ -140,18 +140,18 @@ const experiences: Experience[] = [
   {
     id: 4,
     title: 'Rice Terrace Tour',
-    subtitle: 'Tegallalang, Bali',
+    subtitle: 'Tetebatu, Lombok',
     category: 'cultural',
     image: '/images/LombokRice.webp',
     images: [],
-    location: 'Tegallalang, Bali',
+    location: 'Tetebatu, Lombok',
     distance: '3 Km',
     temp: '30° C',
     rating: 4.8,
     price: 65,
     duration: 'Half Day',
     description:
-      'Explore the iconic Tegallalang terraces carved into hillsides for over a thousand years using the Subak irrigation system — a UNESCO-listed cultural heritage. Walk narrow paths between mirrored paddies, meet farming families, and witness a living agricultural tradition unchanged by modernity.',
+      'Explore the beautiful Tetebatu rice terraces carved into the southern slopes of Mount Rinjani. Walk narrow paths between emerald paddies irrigated by historic streams, meet local Sasak farming families, and witness a living agricultural tradition that has sustained the island for generations.',
   },
   {
     id: 5,

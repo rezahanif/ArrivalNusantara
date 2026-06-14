@@ -153,7 +153,7 @@
 </template>
 
 <script setup lang="ts">
-import { MapPin, Thermometer, Star } from 'lucide-vue-next'
+import { MapPin, Clock, Star } from 'lucide-vue-next'
 import type { Experience } from '~/types/experience'
 
 defineEmits<{ back: []; book: [] }>()
@@ -186,7 +186,7 @@ const photoTops = [138, 216, 301, 379]
 
 const chips = computed(() => [
   { label: 'Distance', value: props.experience.distance, icon: MapPin },
-  { label: 'Temp',     value: props.experience.temp,     icon: Thermometer },
+  { label: 'Duration', value: props.experience.duration, icon: Clock },
   { label: 'Rating',   value: String(props.experience.rating), icon: Star },
 ])
 </script>
