@@ -30,7 +30,7 @@
       <!-- 1. Journey to the Summit (tall) -->
       <GalleryPhotoCard
         class="row-span-6"
-        image="/images/walk.webp"
+        image="/images/Walk.webp"
         :icon="cardsData.journeyToSummit.icon!"
         :title="cardsData.journeyToSummit.title!"
         :description="cardsData.journeyToSummit.body!"

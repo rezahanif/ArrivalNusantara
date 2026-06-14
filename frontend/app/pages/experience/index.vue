@@ -126,7 +126,7 @@ const experiences: Experience[] = [
     title: 'Panoramic Walk',
     subtitle: 'Awaits',
     category: 'mountain',
-    image: '/images/walk.webp',
+    image: '/images/Walk.webp',
     images: [],
     location: 'Lombok, Indonesia',
     distance: '8 Km',
