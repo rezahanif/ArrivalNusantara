@@ -3,11 +3,17 @@
      and renders the Hero component.
 -->
 <template>
-  <LandingHero />
+  <LandingHero @go="goHome" />
 </template>
 
 <script setup lang="ts">
 definePageMeta({
   layout: 'landing',
 })
+
+const { transitionToExperience } = usePageTransition()
+
+function goHome() {
+  transitionToExperience()
+}
 </script>

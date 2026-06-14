@@ -3,7 +3,7 @@
      No Navbar or Footer — the hero owns the entire viewport.
 -->
 <template>
-  <div class="relative w-screen h-screen overflow-hidden">
+  <div class="relative w-full h-[100dvh] lg:w-screen lg:h-screen overflow-hidden">
     <slot />
   </div>
 </template>

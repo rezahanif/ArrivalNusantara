@@ -87,6 +87,22 @@
 
 <script setup lang="ts">
 const { phase } = usePageTransition()
+import { ref, onMounted, onUnmounted, computed } from 'vue'
+
+const isMobile = ref(false)
+
+const checkMobile = () => {
+  isMobile.value = window.innerWidth < 1024
+}
+
+onMounted(() => {
+  checkMobile()
+  window.addEventListener('resize', checkMobile)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', checkMobile)
+})
 
 // True once CSS transitions should be active
 const isAnimating = computed(
@@ -106,7 +122,7 @@ const rootStyle = computed(() => ({
 
 // ── Video wrapper (clips the inner to sidebar width when animating) ────────
 const videoWrapperStyle = computed(() => ({
-  width: isAnimating.value ? '280px' : '100vw',
+  width: isAnimating.value ? (isMobile.value ? '100vw' : '280px') : '100vw',
   transition: isAnimating.value
     ? `width ${DURATION} ${EASE}`
     : 'none',
@@ -114,7 +130,7 @@ const videoWrapperStyle = computed(() => ({
 
 // ── Video inner (shifts left so the sidebar shows its intended crop) ───────
 const videoInnerStyle = computed(() => ({
-  left: isAnimating.value ? '-42vw' : '0px',
+  left: isAnimating.value ? (isMobile.value ? '0px' : '-42vw') : '0px',
   transition: isAnimating.value
     ? `left ${DURATION} ${EASE}`
     : 'none',
@@ -122,23 +138,28 @@ const videoInnerStyle = computed(() => ({
 
 // ── White curtain ──────────────────────────────────────────────────────────
 const curtainStyle = computed(() => ({
-  width: isAnimating.value ? 'calc(100vw - 280px)' : '0px',
+  width: isAnimating.value ? (isMobile.value ? '0px' : 'calc(100vw - 280px)') : '0px',
   transition: isAnimating.value
     ? `width ${DURATION} ${EASE}`
     : 'none',
 }))
 
-// ── Logo: matches landing position (left-13.5 = 54 px) ───────────────────
-//    During animation, gently scale down to match sidebar logo size.
+// ── Logo: matches landing position (left-6 = 24px on mobile, left-13.5 = 54px on desktop) ─
 const logoStyle = computed(() => ({
-  left: '54px', // left-13.5 in Tailwind (13.5 * 4 = 54px)
+  left: isMobile.value ? '24px' : '54px',
+  top: '40px',
 }))
 
 const logoImgStyle = computed(() => ({
-  height: isAnimating.value ? '195.5px' : '202px',
-  width: isAnimating.value ? '170.26px' : '174px',
+  height: isAnimating.value 
+    ? (isMobile.value ? '0px' : '195.5px') 
+    : (isMobile.value ? '150px' : '202px'),
+  width: isAnimating.value 
+    ? (isMobile.value ? '0px' : '170.26px') 
+    : (isMobile.value ? '130px' : '174px'),
+  opacity: isAnimating.value && isMobile.value ? 0 : 1,
   transition: isAnimating.value
-    ? `height ${DURATION} ${EASE}, width ${DURATION} ${EASE}`
+    ? `height ${DURATION} ${EASE}, width ${DURATION} ${EASE}, opacity ${DURATION} ${EASE}`
     : 'none',
 }))
 </script>

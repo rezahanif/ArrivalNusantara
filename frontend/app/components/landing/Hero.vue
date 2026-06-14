@@ -1,23 +1,11 @@
-<!-- components/landing/Hero.vue
-     Landing splash hero — matches Figma node 523:5834.
-     
-     Design spec:
-     • Full-screen: 100vw × 100vh
-     • Background: video (hero-bg.mp4), full cover
-     • Logo: top-2 left-13.5 — aligns with sidebar logo x-axis, slightly below top
-     • Headline: "Explore / Your Favorite Journey" — 64px bold, centered white
-     • Sub-headline: "Let's Make Our Life Beautiful" — 20px, white/80
-     • Spacebar pill: frosted pill w-[194px] h-[36px], two dash icons
-     • Prompt: "Press Spacebar to Continue"
-     • Spacebar keydown / click → triggers cinematic transition to /experience
--->
 <template>
   <section
-    class="relative w-screen h-screen overflow-hidden bg-forest-900 flex flex-col items-center justify-center"
+    class="relative w-full h-[100dvh] lg:w-screen lg:h-screen flex flex-col items-center overflow-hidden lg:justify-center"
+    style="background-color: #03240e"
     aria-label="Landing Hero"
   >
     <!-- Full-screen video background -->
-    <div class="absolute inset-0 pointer-events-none select-none">
+    <div class="absolute inset-0 pointer-events-none select-none z-0">
       <video
         src="/video/hero-bg.mp4"
         autoplay
@@ -26,40 +14,48 @@
         playsinline
         class="w-full h-full object-cover transform scale-110"
       />
-      <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
+      <!-- Ambient overlays -->
+      <div
+        class="absolute inset-0"
+        style="background: linear-gradient(to bottom, rgba(3,36,14,0.55) 0%, rgba(3,36,14,0.12) 30%, rgba(3,36,14,0.0) 55%, rgba(3,36,14,0.55) 85%, rgba(3,36,14,0.75) 100%)"
+      />
     </div>
 
-    <!--
-      Logo — left-13.5 (54 px) keeps the same x-axis as the sidebar logo.
-      top-2 (8 px) shifts it slightly down from the absolute top so the
-      transition overlay logo matches and a seamless handoff is possible.
-    -->
-    <div class="absolute top-2 left-13.5 z-10">
+    <!-- Logo - visible on both mobile and desktop (responsive layout) -->
+    <div class="absolute z-10 top-10 left-6 lg:top-10 lg:left-13.5">
       <img
         src="/images/logo-white.webp"
         alt="Arrival Nusantara"
-        class="h-[202px] w-[174px] object-contain"
+        class="h-[150px] w-[130px] lg:h-[202px] lg:w-[174px] object-contain object-top"
       />
     </div>
 
     <!-- Headline + sub-headline -->
     <div
-      class="relative z-10 flex flex-col items-center gap-3 px-4 text-center transition-opacity duration-200"
+      class="relative z-10 flex flex-col items-center text-center transition-opacity duration-200
+             px-[17px] mt-[145px] max-w-[390px] w-full
+             lg:mt-0 lg:px-4 lg:max-w-none lg:w-auto"
       :class="{ 'opacity-0': isTriggered }"
     >
       <h1
-        class="font-jakarta font-bold text-[64px] leading-[1.17] text-white blur-[0.25px] whitespace-pre-line"
+        class="font-jakarta font-bold text-[27px] leading-[40px] text-white blur-[0.25px] pb-3 break-words w-[328px]
+               lg:text-[64px] lg:leading-[1.17] lg:w-auto lg:pb-0"
       >
-        Explore&#10;Your Favorite Journey
+        Explore Your<br class="lg:hidden" /><span class="hidden lg:inline">&#10;</span> Favorite Journey
       </h1>
-      <p class="font-jakarta font-normal text-[20px] leading-[1.12] text-white/80">
+      <p
+        class="font-jakarta font-normal text-[14px] leading-[22.4px] text-white/80
+               lg:text-[20px] lg:leading-[1.12]"
+      >
         Let's Make Our Life Beautiful
       </p>
     </div>
 
-    <!-- Spacebar CTA pill -->
+    <div class="flex-1 lg:hidden" />
+
+    <!-- Spacebar CTA pill - desktop only -->
     <div
-      class="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-5 text-center transition-opacity duration-200"
+      class="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 hidden lg:flex flex-col items-center gap-5 text-center transition-opacity duration-200"
       :class="{ 'opacity-0': isTriggered }"
     >
       <button
@@ -88,32 +84,94 @@
         Press Spacebar to Continue
       </p>
     </div>
+
+    <!-- GO Button - mobile only -->
+    <div
+      class="relative z-10 flex flex-col items-center mb-10 lg:hidden transition-opacity duration-200"
+      :class="{ 'opacity-0': isTriggered }"
+    >
+      <div
+        class="w-[1px]"
+        style="height: 94px; background: linear-gradient(180deg, rgba(217,217,217,0) 28.56%, rgba(153,153,153,0.7) 99.91%);"
+      />
+      <button
+        type="button"
+        class="relative w-14 h-14 rounded-full flex items-center justify-center active:scale-95 transition-transform"
+        style="filter: drop-shadow(0px 4px 2px rgba(0,0,0,0.25))"
+        :disabled="isTriggered"
+        @click="handleContinue"
+      >
+        <span
+          class="absolute inset-0 rounded-full"
+          style="background: #f5f3f3; box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1), 0px 4px 6px -4px rgba(0,0,0,0.1);"
+        />
+        <span
+          class="relative font-bold text-[27px] text-black leading-none select-none font-jakarta"
+        >
+          GO
+        </span>
+      </button>
+    </div>
   </section>
 </template>
 
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue'
 
-const { transitionToExperience } = usePageTransition()
+const emit = defineEmits<{
+  go: []
+}>()
 
 // Prevent double-firing while the transition is running
 const isTriggered = ref(false)
 
-async function handleContinue(): Promise<void> {
+function handleContinue(): void {
   if (isTriggered.value) return
   isTriggered.value = true
-  await transitionToExperience()
+  emit('go')
 }
 
-// Spacebar listener — attached only on the client
+// Spacebar / Gesture listeners — attached only on the client
 onMounted(() => {
+  // 1. Keyboard Spacebar listener
   const onKeyDown = (e: KeyboardEvent) => {
     if (e.code === 'Space' || e.key === ' ') {
       e.preventDefault()
       handleContinue()
     }
   }
+
+  // 2. Mouse/Trackpad wheel down listener
+  const onWheel = (e: WheelEvent) => {
+    if (e.deltaY > 20) {
+      handleContinue()
+    }
+  }
+
+  // 3. Touch swipe up listener (for mobile gestures)
+  let touchStartY = 0
+  const onTouchStart = (e: TouchEvent) => {
+    touchStartY = e.touches[0]?.clientY ?? 0
+  }
+  const onTouchMove = (e: TouchEvent) => {
+    const touchEndY = e.touches[0]?.clientY ?? 0
+    const diffY = touchStartY - touchEndY
+    // Swipe up threshold of 40px
+    if (diffY > 40) {
+      handleContinue()
+    }
+  }
+
   window.addEventListener('keydown', onKeyDown)
-  onUnmounted(() => window.removeEventListener('keydown', onKeyDown))
+  window.addEventListener('wheel', onWheel, { passive: true })
+  window.addEventListener('touchstart', onTouchStart, { passive: true })
+  window.addEventListener('touchmove', onTouchMove, { passive: true })
+
+  onUnmounted(() => {
+    window.removeEventListener('keydown', onKeyDown)
+    window.removeEventListener('wheel', onWheel)
+    window.removeEventListener('touchstart', onTouchStart)
+    window.removeEventListener('touchmove', onTouchMove)
+  })
 })
 </script>
