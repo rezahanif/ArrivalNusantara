@@ -53,6 +53,10 @@
           </span>
         </NuxtLink>
       </nav>
+      <!-- Get in Touch — pushed to bottom -->
+      <div class="mt-auto pt-6">
+        <SharedGetInTouch />
+      </div>
     </div>
   </aside>
 </template>

@@ -4,6 +4,7 @@
 @theme {
   /* Typography */
   --font-jakarta: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-script: 'Dancing Script', cursive;
 
   /* Brand greens (from Figma: #1a3a22) */
   --color-forest-950: #0e2116;
@@ -12,13 +13,16 @@
   --color-forest-700: #2e5438;
 
   /* Neutral tones */
-  --color-sand-50:  #fbf9f8;
+  --color-sand-50: #fbf9f8;
   --color-sand-100: #f5f0ec;
 }
+
 /* ─── Utilities ─────────────────────────────────────────────── */
 @utility scrollbar-none {
   scrollbar-width: none;
+
   &::-webkit-scrollbar {
-    display: none; /* Hides in Chrome/Safari/Edge */
+    display: none;
+    /* Hides in Chrome/Safari/Edge */
   }
 }
