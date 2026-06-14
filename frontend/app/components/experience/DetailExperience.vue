@@ -138,6 +138,7 @@
           hover:bg-forest-800 active:scale-95
           transition-all duration-200
         "
+        @click="emit('book')"
       >
         Book This Trip
         <div class="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
@@ -161,6 +162,7 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   close: []
+  book: []
 }>()
 
 // ── Image gallery state ────────────────────────────────────────

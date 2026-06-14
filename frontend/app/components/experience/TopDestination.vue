@@ -16,6 +16,7 @@
         v-for="dest in destinations"
         :key="dest.id"
         class="flex items-center gap-3 p-3 rounded-2xl hover:bg-white transition-colors duration-200 cursor-pointer"
+        @click="emit('select', dest)"
       >
         <!-- Thumbnail -->
         <img
@@ -50,5 +51,9 @@ import type { Destination } from '~/types/experience'
 
 defineProps<{
   destinations: Destination[]
+}>()
+
+const emit = defineEmits<{
+  select: [dest: Destination]
 }>()
 </script>

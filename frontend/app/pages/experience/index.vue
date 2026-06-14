@@ -22,6 +22,7 @@
       />
       <ExperienceMobileTopDestination
         :destinations="destinations"
+        @select="openDestinationDetail"
       />
     </div>
 
@@ -34,7 +35,7 @@
         <ExperienceMobileDetailExperience
           :experience="selectedMobile"
           @back="selectedMobile = null"
-          @book="selectedMobile = null"
+          @book="bookingExperience = selectedMobile"
         />
       </div>
     </Transition>
@@ -53,7 +54,10 @@
       />
 
       <!-- Top Destinations grid -->
-      <ExperienceTopDestination :destinations="destinations" />
+      <ExperienceTopDestination
+        :destinations="destinations"
+        @select="openDestinationDetail"
+      />
     </div>
   </main>
 
@@ -63,8 +67,23 @@
       v-if="selectedDesktop"
       :experience="selectedDesktop"
       @close="selectedDesktop = null"
+      @book="bookingExperience = selectedDesktop"
     />
   </Transition>
+
+  <!-- Booking Form Modal Overlay -->
+  <ExperienceBookingform
+    v-if="bookingExperience"
+    :experience="bookingExperience"
+    @close="bookingExperience = null"
+  />
+
+  <!-- Destination Detail Modal Overlay -->
+  <ExperienceDetailTopDestination
+    v-if="selectedDestination"
+    :destination="selectedDestination"
+    @close="selectedDestination = null"
+  />
 </template>
 
 <script setup lang="ts">
@@ -85,6 +104,15 @@ function openDesktopDetail(exp: Experience) {
 const selectedMobile = ref<Experience | null>(null)
 function openMobileDetail(exp: Experience) {
   selectedMobile.value = exp
+}
+
+// ── Booking form state ───────────────────────────────────────────
+const bookingExperience = ref<Experience | null>(null)
+
+// ── Destination detail state ──────────────────────────────────────
+const selectedDestination = ref<Destination | null>(null)
+function openDestinationDetail(dest: Destination) {
+  selectedDestination.value = dest
 }
 
 // ── Shared data (replace with API / Supabase fetch) ───────────────
