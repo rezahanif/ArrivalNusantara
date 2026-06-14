@@ -195,7 +195,7 @@ const cardsData = {
   },
   hiddenParadise: {
     type: 'text-then-image',
-    image: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=400&q=75',
+    image: '/images/paradise.webp',
     icon: Waves,
     iconSize: '13px',
     iconPx: 8,
@@ -211,13 +211,13 @@ const cardsData = {
     title: 'Into the Wild',
     body: 'Disconnect to reconnect. The wild reminds us who we are.',
     location: 'Rinjani National Park',
-    image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=400&q=75',
+    image: '/images/wild.webp',
   },
   localImpact: {
     type: 'image-left',
     title: 'Local Impact',
     body: 'We work hand in hand with local guides, farmers, and communities to create real impact.',
-    image: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=300&q=75',
+    image: '/images/local.webp',
   },
   tasteOfLombok: {
     type: 'icon-card',

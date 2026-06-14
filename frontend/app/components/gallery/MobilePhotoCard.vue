@@ -84,8 +84,8 @@
       class="bg-[#1a3a22] rounded-3xl p-5 flex flex-col h-[128px] justify-center"
     >
       <h2 class="font-jakarta font-normal text-[24px] leading-[36px] text-white">2018</h2>
-      <p class="font-jakarta font-bold text-[12px] leading-[18px] text-[#1b1c1c]">Founded in Lombok</p>
-      <p class="font-jakarta font-normal text-[11px] leading-[16.5px] text-[#1b1c1c] opacity-80 mt-[7px]">
+      <p class="font-jakarta font-bold text-[12px] leading-[18px] text-white">Founded in Lombok</p>
+      <p class="font-jakarta font-normal text-[11px] leading-[16.5px] text-white opacity-80 mt-[7px]">
         Built with passion,<br/>guided by nature.
       </p>
     </div>
@@ -137,8 +137,8 @@
     >
       <div class="flex flex-col gap-1 p-5">
         <h3 class="font-jakarta font-normal text-[16px] leading-[24px] text-white">{{ card.title }}</h3>
-        <p class="font-jakarta font-normal text-[11px] leading-[15.13px] text-[#1b1c1c] opacity-80">{{ card.body }}</p>
-        <p class="font-jakarta font-normal text-[10px] leading-[15px] text-[#1b1c1c] mt-1">{{ card.location }}</p>
+        <p class="font-jakarta font-normal text-[11px] leading-[15.13px] text-white opacity-80">{{ card.body }}</p>
+        <p class="font-jakarta font-normal text-[10px] leading-[15px] text-white mt-1">{{ card.location }}</p>
       </div>
       <div class="relative overflow-hidden opacity-80" style="height: 128px;">
         <img :src="card.image" :alt="card.title" class="w-full h-full object-cover" loading="lazy"/>
