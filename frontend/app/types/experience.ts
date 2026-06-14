@@ -15,6 +15,7 @@ export interface Experience {
   rating:      number
   price:       number
   description: string
+  duration?:   string
 }
 
 export interface Destination {

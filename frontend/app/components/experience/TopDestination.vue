@@ -8,13 +8,6 @@
       <h2 class="font-jakarta font-bold text-[24px] text-gray-900">
         Top Destinations
       </h2>
-      <button
-        type="button"
-        aria-label="More destinations"
-        class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-gray-100 transition-colors"
-      >
-        <MoreHorizontal class="w-5 h-5 text-gray-400" />
-      </button>
     </div>
 
     <!-- 2-column grid -->

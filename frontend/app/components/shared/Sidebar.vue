@@ -1,30 +1,32 @@
-<!-- components/shared/SidebarNav.vue
+<!-- components/shared/Sidebar.vue
      Desktop sidebar navigation — used by Experience, Gallery, About, Contact.
      Left column: forest-green, full-height, with background photo overlay.
+     Auto-imported as <SharedSidebar /> by the `sidebar` layout.
 -->
 <template>
-  <aside class="relative w-[280px] shrink-0 flex flex-col overflow-hidden bg-forest-900">
+  <aside class="relative w-[280px] h-screen shrink-0 flex flex-col overflow-hidden bg-forest-900">
 
-    <!-- Background photo (same as hero) -->
-    <div class="absolute inset-0 pointer-events-none select-none">
-      <img
-        src="/images/hero-bg.webp"
-        alt=""
-        aria-hidden="true"
-        class="w-full h-full object-cover opacity-50"
-      />
-      <div class="absolute inset-0 bg-forest-900/60" />
+    <div class="absolute top-0 -left-[42vw] w-screen h-screen pointer-events-none select-none">
+      <video
+        src="/video/hero-bg.mp4"
+        autoplay
+        loop
+        muted
+        playsinline
+        class="w-full h-full object-cover transform scale-110 opacity-100" 
+      ></video>
+      <div class="absolute inset-0 bg-black/20" />
     </div>
 
     <!-- Sidebar content -->
     <div class="relative z-10 flex flex-col h-full px-6 py-8">
 
       <!-- Logo -->
-      <div class="flex justify-center mb-12">
-        <img
-          src="/images/logo.webp"
+      <div class="flex justify-center mb-8">
+        <img 
+          src="/images/logo-white.webp"
           alt="Arrival Nusantara"
-          class="h-[101px] w-[87px] object-contain"
+          class="h-[195.5px] w-[170.26px] object-contain"
         />
       </div>
 

@@ -40,12 +40,5 @@
 </template>
 
 <script setup lang="ts">
-import { Camera, Facebook, Youtube, Compass } from 'lucide-vue-next'
-
-const socials = [
-  { icon: Camera,   name: 'Instagram',   handle: '@arrivalnusantara' },
-  { icon: Facebook, name: 'Facebook',    handle: 'Arrival Nusantara' },
-  { icon: Youtube,  name: 'YouTube',     handle: 'Arrival Nusantara' },
-  { icon: Compass,  name: 'TripAdvisor', handle: 'Arrival Nusantara' },
-]
+const { socialLinks: socials } = useContactInfo()
 </script>

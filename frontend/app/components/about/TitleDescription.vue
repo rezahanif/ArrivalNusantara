@@ -23,16 +23,11 @@
           <path
             d="M2 9.5C40 3 120 1 230 6"
             stroke="currentColor"
-            stroke-width="3"
+            stroke-width="7"
             stroke-linecap="round"
           />
         </svg>
       </span>
-      <!-- Mountain doodle accent -->
-      <Mountain
-        class="hidden lg:inline-block w-[120px] h-[40px] text-forest-700/70 align-middle ml-2 -mt-6"
-        :stroke-width="1.25"
-      />
     </h2>
 
     <!-- Intro paragraphs -->

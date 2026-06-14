@@ -1,34 +1,65 @@
-# 1. Dependencies (Shared with React)
+# 1. Dependencies
 node_modules/
 .pnp
 .pnp.js
 
-# 2. Nuxt 4 Specific Core Exclusions (CRITICAL)
+# 2. Nuxt / Build outputs (CRITICAL)
 .nuxt/
 .output/
+.data/
+.cache/
 dist/
 build/
 
-# 3. Local Runtime Environmental Keys (Security Keep-out)
+# 3. Environment & Secrets (Security — never commit these)
 .env
 .env.*
+.env.local
+.env.*.local
 !.env.example
 
-# 4. JavaScript/TypeScript Dev Tooling Configurations
+# 4. Private keys & certificates
+*.key
+*.pem
+*.p12
+*.pfx
+*.cer
+
+# 5. Service account / API credential files
+serviceAccount*.json
+*service-account*.json
+*firebase-adminsdk*.json
+*credentials*.json
+google-services.json
+GoogleService-Info.plist
+
+# 6. JavaScript / TypeScript tooling
 .eslintcache
 *.log
 *-debug.log*
 *-error.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# 5. Apple macOS System Metadata Files
+# 7. Apple macOS system metadata
 .DS_Store
 .AppleDouble
 .LSOverride
 Thumbs.db
 
-# 6. IDE Settings (Keeps your local text editor configurations personal)
+# 8. IDE settings
 .vscode/
 .idea/
 *.swp
 *.swo
 .project
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# 9. Testing & coverage
+coverage/
+.nyc_output/

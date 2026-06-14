@@ -22,7 +22,15 @@
           <p class="font-jakarta font-semibold text-[14px] leading-[20px] text-[#03240e]">
             {{ item.label }}
           </p>
-          <p class="font-jakarta font-bold text-[16px] leading-[24px] text-[#03240e] whitespace-pre-line">
+          <a
+            v-if="item.link"
+            :href="item.link"
+            target="_blank"
+            class="font-jakarta font-bold text-[16px] leading-[24px] text-[#03240e] whitespace-pre-line hover:underline"
+          >
+            {{ item.value }}
+          </a>
+          <p v-else class="font-jakarta font-bold text-[16px] leading-[24px] text-[#03240e] whitespace-pre-line">
             {{ item.value }}
           </p>
           <p class="font-jakarta text-[13px] leading-[18px] text-[#424842] whitespace-pre-line">
@@ -35,32 +43,5 @@
 </template>
 
 <script setup lang="ts">
-import { MessageCircle, Mail, Phone, MapPin } from 'lucide-vue-next'
-
-const items = [
-  {
-    icon: MessageCircle,
-    label: 'WhatsApp',
-    value: '+62 812-3456-7890',
-    helper: 'Chat with us on WhatsApp',
-  },
-  {
-    icon: Mail,
-    label: 'Email',
-    value: 'info@arrivalnusantara.com',
-    helper: "We'll reply to your email",
-  },
-  {
-    icon: Phone,
-    label: 'Phone',
-    value: '+62 370 123 4567',
-    helper: 'Mon – Sun, 08:00 – 18:00 (WITA)',
-  },
-  {
-    icon: MapPin,
-    label: 'Office',
-    value: 'Jl. Pariwisata No. 12, Senaru,\nLombok Utara, NTB 83354 Indonesia',
-    helper: 'Visit us by appointment',
-  },
-]
+const { contactItems: items } = useContactInfo()
 </script>

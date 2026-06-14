@@ -1,12 +1,15 @@
 <!-- components/gallery/Fab.vue
-     Floating action button, fixed to bottom-right of the main content area.
+     Floating action button — fixed to bottom-right of the viewport.
+     Mobile: bottom-[96px] (above BottomNav, Figma node 554:125)
+     Desktop: bottom-8 (standard position)
 -->
 <template>
   <button
     type="button"
     aria-label="Add photo"
     class="
-      fixed bottom-8 right-8 z-30
+      fixed right-6 z-30
+      bottom-[96px] lg:bottom-8
       w-14 h-14 rounded-full
       bg-forest-900 text-white
       flex items-center justify-center
@@ -21,4 +24,4 @@
 
 <script setup lang="ts">
 import { Plus } from 'lucide-vue-next'
-</script>s
+</script>

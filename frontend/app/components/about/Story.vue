@@ -7,7 +7,7 @@
     <!-- Photo -->
     <div class="flex-1 min-w-0 h-[256px] rounded-3xl overflow-hidden shrink-0">
       <img
-        src="/images/about/our-story.jpg"
+        src="/images/aboutleft.webp"
         alt="Sunrise over Rinjani crater lake"
         class="w-full h-full object-cover"
       />

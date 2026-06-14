@@ -7,16 +7,16 @@
     <!-- Large background photo -->
     <div class="absolute inset-0 -top-4 rounded-3xl overflow-hidden">
       <img
-        src="/images/about/mountain-peak.jpg"
+        src="/images/aboutrightmain.webp"
         alt="Majestic mountain peak"
         class="w-full h-full object-cover"
       />
     </div>
 
     <!-- Small overlapping photo: hiker -->
-    <div class="absolute left-[-24px] top-[135px] w-[145px] aspect-[110/192] rounded-2xl overflow-hidden border-[5px] border-white shadow-lg">
+    <div class="absolute left-[-26px] top-[170px] w-[145px] aspect-[110/192] rounded-2xl overflow-hidden border-[5px] border-white shadow-lg">
       <img
-        src="/images/about/hiker.jpg"
+        src="/images/aboutrightrectangel.webp"
         alt="Hiker looking at mountains"
         class="w-full h-full object-cover"
       />
@@ -25,7 +25,7 @@
     <!-- Small overlapping photo: coffee cherries -->
     <div class="absolute left-[114px] top-[225px] w-[180px] aspect-[179/192] rounded-2xl overflow-hidden border-[5px] border-white shadow-lg">
       <img
-        src="/images/about/coffee-cherries.jpg"
+        src="/images/aboutrightsquare.webp"
         alt="Hands holding coffee cherries"
         class="w-full h-full object-cover"
       />

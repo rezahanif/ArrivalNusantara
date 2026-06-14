@@ -5,7 +5,8 @@
 <template>
   <div class="relative w-full h-[280px] rounded-3xl overflow-hidden">
     <img
-      src="/images/contact/volcano.jpg"
+      v-if="heroImage"
+      :src="heroImage"
       alt="Mount Rinjani at sunrise"
       class="absolute inset-0 w-full h-full object-cover"
     />
@@ -29,4 +30,6 @@
 
 <script setup lang="ts">
 import { Headset } from 'lucide-vue-next'
+
+const heroImage = '/images/lombok.webp'
 </script>
