@@ -66,10 +66,4 @@ export default defineNuxtConfig({
     },
   },
 
-  // 9. Nitro static optimization engine
-  nitro: {
-    prerender: {
-      routes: ['/sitemap.xml', '/robots.txt'],
-    },
-  },
 })
