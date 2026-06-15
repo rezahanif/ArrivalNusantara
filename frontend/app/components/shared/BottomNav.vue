@@ -7,17 +7,18 @@
   <nav
     class="
       lg:hidden fixed bottom-0 inset-x-0 z-30
-      flex items-center gap-[31.7px]
+      flex items-center justify-around
       bg-[#fbf9f8] rounded-tl-[12px] rounded-tr-[12px]
-      px-[15px] py-[12px]
+      px-[10px]
       drop-shadow-[0px_-4px_10px_rgba(26,58,34,0.05)]
     "
+    style="padding-bottom: calc(12px + env(safe-area-inset-bottom)); padding-top: 12px;"
   >
     <NuxtLink
       v-for="item in navItems"
       :key="item.to"
       :to="item.to"
-      class="flex flex-col items-center justify-center px-4 py-1 rounded-full"
+      class="flex flex-col items-center justify-center flex-1 py-1"
     >
       <component
       :is="item.icon"
