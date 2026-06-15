@@ -45,11 +45,19 @@
           :style="videoInnerStyle"
         >
           <video
+            v-if="!isMobile"
             src="/video/hero-bg.mp4"
             autoplay
             loop
             muted
             playsinline
+            poster="/images/hero-bg.webp"
+            class="w-full h-full object-cover transform scale-110"
+          />
+          <img
+            v-else
+            src="/images/hero-bg.webp"
+            alt=""
             class="w-full h-full object-cover transform scale-110"
           />
           <!-- Gradient overlay matches landing hero -->

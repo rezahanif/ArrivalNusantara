@@ -4,15 +4,19 @@
      Auto-imported as <SharedSidebar /> by the `sidebar` layout.
 -->
 <template>
-  <aside class="relative w-[280px] h-screen shrink-0 flex flex-col overflow-hidden bg-forest-900">
+  <aside
+    class="relative w-[280px] h-screen shrink-0 flex flex-col overflow-hidden bg-forest-900 bg-cover bg-center"
+    style="background-image: url('/images/hero-bg.webp')"
+  >
 
-    <div class="absolute top-0 -left-[42vw] w-screen h-screen pointer-events-none select-none">
+    <div v-if="!isMobile" class="absolute top-0 -left-[42vw] w-screen h-screen pointer-events-none select-none">
       <video
         src="/video/hero-bg.mp4"
         autoplay
         loop
         muted
         playsinline
+        poster="/images/hero-bg.webp"
         class="w-full h-full object-cover transform scale-110 opacity-100" 
       ></video>
       <div class="absolute inset-0 bg-black/20" />
@@ -62,9 +66,23 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
 import { Compass, Images, Globe, Phone } from 'lucide-vue-next'
 
 const route = useRoute()
+
+const isMobile = ref(true)
+
+onMounted(() => {
+  isMobile.value = window.innerWidth < 1024
+  const checkMobile = () => {
+    isMobile.value = window.innerWidth < 1024
+  }
+  window.addEventListener('resize', checkMobile)
+  onUnmounted(() => {
+    window.removeEventListener('resize', checkMobile)
+  })
+})
 
 const navItems = [
   { label: 'Experience', to: '/experience', icon: Compass },

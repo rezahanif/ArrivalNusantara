@@ -1,18 +1,23 @@
 <template>
   <section
-    class="relative w-full h-[100dvh] lg:w-screen lg:h-screen flex flex-col items-center overflow-hidden lg:justify-center"
-    style="background-color: #03240e"
+    class="relative w-full h-[100dvh] lg:w-screen lg:h-screen flex flex-col items-center overflow-hidden lg:justify-center bg-cover bg-center"
+    style="background-color: #03240e; background-image: url('/images/hero-bg.webp')"
     aria-label="Landing Hero"
   >
     <!-- Full-screen video background -->
     <div class="absolute inset-0 pointer-events-none select-none z-0">
       <video
+        v-if="!autoplayFailed"
+        ref="videoRef"
         src="/video/hero-bg.mp4"
         autoplay
         loop
         muted
         playsinline
-        class="w-full h-full object-cover transform scale-110"
+        poster="/images/hero-bg.webp"
+        @playing="videoLoaded = true"
+        class="w-full h-full object-cover transform scale-110 transition-opacity duration-700"
+        :class="videoLoaded ? 'opacity-100' : 'opacity-0'"
       />
       <!-- Ambient overlays -->
       <div
@@ -124,6 +129,9 @@ const emit = defineEmits<{
 
 // Prevent double-firing while the transition is running
 const isTriggered = ref(false)
+const videoLoaded = ref(false)
+const autoplayFailed = ref(false)
+const videoRef = ref<HTMLVideoElement | null>(null)
 
 function handleContinue(): void {
   if (isTriggered.value) return
@@ -133,6 +141,16 @@ function handleContinue(): void {
 
 // Spacebar / Gesture listeners — attached only on the client
 onMounted(() => {
+  // Autoplay check
+  if (videoRef.value) {
+    videoRef.value.play().then(() => {
+      videoLoaded.value = true
+    }).catch((err) => {
+      console.warn('Video autoplay blocked by browser/system:', err)
+      autoplayFailed.value = true
+    })
+  }
+
   // 1. Keyboard Spacebar listener
   const onKeyDown = (e: KeyboardEvent) => {
     if (e.code === 'Space' || e.key === ' ') {
